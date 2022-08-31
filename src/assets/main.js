@@ -1,6 +1,6 @@
 const API = 'https://youtube-v31.p.rapidapi.com/search?channelId=UC9k0tTsh_qStx0HPuPftSsg&part=snippet%2Cid&order=date&maxResults=9';
 
-const algoMal = null || document.getElementById('algoMal');
+// const algoMal = null || document.getElementById('algoMal');
 const content = null || document.getElementById('content');
 
 const options = {
@@ -24,9 +24,9 @@ async function fetchData (urlApi) {
         `
         ${videos.items.map(video => 
         `
+            <a href="https://youtube.com/watch?v=${video.id.videoId}" target="_blank">
             <div class="group relative">
-                <div
-                    class="w-full bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:aspect-none">
+                <div class="w-full bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:aspect-none">
                     <img src="${video.snippet.thumbnails.high.url}" alt="${video.snippet.description}" class="w-full">
                 </div>
                 <div class="mt-4 flex justify-between">
@@ -36,8 +36,9 @@ async function fetchData (urlApi) {
                     </h3>
                 </div>
             </div>
+            </a>
         `
-        ).slice(0,4).join('')}
+        ).slice(0,8).join('')}
         
         `;
         content.innerHTML = view;
